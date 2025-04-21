@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Broken Mobile View</title>
+  <!-- Intentionally OMITTED meta viewport tag -->
+  <style>
+    /* Force extra-wide layout */
+    body {
+      width: 2000px;
+      margin: 0;
+      padding: 0;
+      font-size: 6px; /* Way too small for phones */
+      line-height: 1;
+      background: #ffffff;
+      color: #f0f0f0; /* Very bad contrast */
+    }
+
+    
+    h1 {
+      font-size: 80px; /* Way too large for mobile */
+      margin: 0;
+      padding: 20px;
+    }
+
+    p {
+      width: 1800px; /* Causes horizontal scroll */
+      margin: 10px 0;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 2px; /* Very little space = too close to click */
+    }
+
+    button {
+      width: 400px;
+      height: 80px;
+      font-size: 25px;
+      margin: 0;
+    }
+
+    img {
+      width: 1500px; /* Overflows screen */
+      height: auto;
+      display: block;
+    }
+
+    .scroll-box {
+      width: 1000px;
+      overflow: scroll;
+      background: #ddd;
+      white-space: nowrap;
+      font-size: 10px;
+    }
+
+    .scroll-box span {
+      display: inline-block;
+      width: 300px;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome!</h1>
+
+  <p>This paragraph is extremely wide and hard to read on mobile. Users will need to scroll sideways to see the full content, which is not good.</p>
+
+  <img src="https://media.istockphoto.com/id/2022774836/photo/coding-concept-digital-background-with-an-abstract-particles-and-parts-of-code-strings.webp?s=2048x2048&w=is&k=20&c=ezY6ug2A2OgWwv1jwg_xsOoJGz6qweAR-fmjQDe9T_g=" alt="Huge Image">
+
+  <div class="buttons">
+    <button>One</button>
+    <button>Two</button>
+    <button>Three</button>
+  </div>
+
+  <div class="scroll-box">
+    <span>Box 1</span><span>Box 2</span><span>Box 3</span><span>Box 4</span><span>Box 5</span>
+  </div>
+
+</body>
+</html>
