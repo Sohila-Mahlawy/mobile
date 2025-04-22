@@ -132,22 +132,41 @@
             font-size: 1em;
         }
 
+        /* Intentionally bad mobile view */
         @media (max-width: 768px) {
             .sidebar {
-                width: 180px;
+                width: 220px; /* Fixed width causes overflow */
+                position: absolute; /* Overlaps content */
+                z-index: 1001;
             }
 
             .main-content {
-                margin-left: 200px;
+                margin-left: 0; /* No margin, content overlaps sidebar */
+                padding: 10px; /* Reduced padding makes it cramped */
+                font-size: 0.8em; /* Text too small */
+            }
+
+            header {
+                padding: 10px; /* Cramped header */
             }
 
             header .logo {
-                font-size: 1.8em;
+                font-size: 1.5em; /* Slightly smaller but still too big */
             }
 
             header nav a {
-                margin: 0 10px;
-                font-size: 1em;
+                margin: 0 5px; /* Links too close together */
+                font-size: 0.9em; /* Hard to read */
+            }
+
+            footer {
+                padding: 10px;
+                font-size: 0.7em; /* Tiny text */
+            }
+
+            /* Force horizontal scrolling */
+            body {
+                min-width: 1000px; /* Forces horizontal scroll */
             }
         }
     </style>
@@ -203,7 +222,7 @@
         </p>
         <h2>Sample Content Section</h2>
         <p>
-            Here's a sample section to add more content. Imagine this as a blog post, product description, or any other 
+            Here's a sample section to add more content. Imagine this as a bloghlte post, product description, or any other 
             type of information you'd like to share. The layout is flexible and can accommodate various content types.
         </p>
         <p>
