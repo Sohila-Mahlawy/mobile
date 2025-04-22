@@ -1,82 +1,248 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Broken Mobile View</title>
-  <!-- Intentionally OMITTED meta viewport tag -->
-  <style>
-    /* Force extra-wide layout */
-    body {
-      width: 2000px;
-      margin: 0;
-      padding: 0;
-      font-size: 6px; /* Way too small for phones */
-      line-height: 1;
-      background: #ffffff;
-      color: #f0f0f0; /* Very bad contrast */
-    }
+    <meta charset="UTF-8">
+    <title>Desktop-Only Beautiful Website</title>
+    <style>
+        /* Fixed layout for large screens only */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #2c3e50;
+            min-width: 1200px; /* Minimum width requirement */
+        }
 
-    
-    h1 {
-      font-size: 80px; /* Way too large for mobile */
-      margin: 0;
-      padding: 20px;
-    }
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 25px 50px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: relative;
+            z-index: 100;
+        }
 
-    p {
-      width: 1800px; /* Causes horizontal scroll */
-      margin: 10px 0;
-    }
+        header h1 {
+            font-size: 2.8em;
+            margin: 0;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+            letter-spacing: 1px;
+        }
 
-    .buttons {
-      display: flex;
-      gap: 2px; /* Very little space = too close to click */
-    }
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(180deg, #2c3e50 0%, #4ca1af 100%);
+            color: white;
+            float: left;
+            height: calc(100vh - 180px);
+            padding: 30px;
+            box-sizing: border-box;
+            position: fixed;
+            box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+        }
 
-    button {
-      width: 400px;
-      height: 80px;
-      font-size: 25px;
-      margin: 0;
-    }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 40px;
+        }
 
-    img {
-      width: 1500px; /* Overflows screen */
-      height: auto;
-      display: block;
-    }
+        .sidebar li {
+            margin-bottom: 25px;
+            transition: all 0.3s;
+        }
 
-    .scroll-box {
-      width: 1000px;
-      overflow: scroll;
-      background: #ddd;
-      white-space: nowrap;
-      font-size: 10px;
-    }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 6px;
+        }
 
-    .scroll-box span {
-      display: inline-block;
-      width: 300px;
-      padding: 20px;
-    }
-  </style>
+        .sidebar a:hover {
+            background-color: rgba(255,255,255,0.15);
+            transform: translateX(8px);
+        }
+
+        .sidebar .active {
+            background-color: rgba(255,255,255,0.2);
+            border-left: 4px solid #f39c12;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            margin-left: 280px;
+            padding: 40px 50px;
+            background-color: white;
+            min-height: calc(100vh - 200px);
+            box-shadow: 0 0 30px rgba(0,0,0,0.08);
+            width: calc(100% - 330px);
+            float: left;
+            margin-top: 100px;
+        }
+
+        /* Footer Styles */
+        footer {
+            clear: both;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            color: white;
+            text-align: center;
+            padding: 25px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+            z-index: 100;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #f12711 0%, #f5af19 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin: 15px 10px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(241, 39, 17, 0.3);
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(241, 39, 17, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #4776E6 0%, #8E54E9 100%);
+            box-shadow: 0 4px 15px rgba(71, 118, 230, 0.3);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 8px 20px rgba(71, 118, 230, 0.4);
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            border-top: 4px solid #f39c12;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .card h3 {
+            color: #2c3e50;
+            margin-top: 0;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .card p {
+            line-height: 1.6;
+            color: #7f8c8d;
+        }
+
+        /* Special Effects */
+        .highlight {
+            background: linear-gradient(135deg, #12c2e9 0%, #c471ed 50%, #f64f59 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+
+        /* Warning Message */
+        .desktop-warning {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(231, 76, 60, 0.9);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <h1>Beautiful <span class="highlight">Desktop-Only</span> Website</h1>
+    </header>
 
-  <h1>Welcome!</h1>
+    <div class="sidebar">
+        <ul>
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Testimonials</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
 
-  <p>This paragraph is extremely wide and hard to read on mobile. Users will need to scroll sideways to see the full content, which is not good.</p>
+    <div class="main-content">
+        <div class="card">
+            <h3>Welcome to Our Website</h3>
+            <p>This website is designed exclusively for desktop viewing. For optimal experience, please view on a computer with a screen width of at least 1200px. Our content and layout are not optimized for mobile devices.</p>
+            <a href="#" class="btn">Learn More</a>
+            <a href="#" class="btn btn-secondary">View Demo</a>
+        </div>
 
-  <img src="https://media.istockphoto.com/id/2022774836/photo/coding-concept-digital-background-with-an-abstract-particles-and-parts-of-code-strings.webp?s=2048x2048&w=is&k=20&c=ezY6ug2A2OgWwv1jwg_xsOoJGz6qweAR-fmjQDe9T_g=" alt="Huge Image">
+        <div class="card">
+            <h3>Premium Services</h3>
+            <p>We offer a range of high-end services designed for desktop users. Our solutions are crafted with attention to detail and perfect for large-screen experiences.</p>
+            <a href="#" class="btn">Explore Services</a>
+        </div>
 
-  <div class="buttons">
-    <button>One</button>
-    <button>Two</button>
-    <button>Three</button>
-  </div>
+        <div class="card">
+            <h3>Why Choose Us?</h3>
+            <p>With years of experience in desktop-focused design, we deliver exceptional quality that looks stunning on large displays. Our team specializes in creating immersive desktop experiences.</p>
+            <a href="#" class="btn btn-secondary">Our Advantages</a>
+        </div>
+    </div>
 
-  <div class="scroll-box">
-    <span>Box 1</span><span>Box 2</span><span>Box 3</span><span>Box 4</span><span>Box 5</span>
-  </div>
+    <footer>
+        <p>&copy; 2023 Desktop-Only Website. All rights reserved. | Designed for desktop viewing only</p>
+    </footer>
 
+    <div class="desktop-warning" id="warningMessage">
+        <h3>Mobile Device Detected</h3>
+        <p>This website is designed for desktop viewing only. For best experience, please visit using a computer.</p>
+    </div>
+
+    <script>
+        // Show warning if screen is too small
+        if (window.innerWidth < 1200) {
+            document.getElementById('warningMessage').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
